@@ -5,9 +5,10 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 140vh;
             margin: 0;
             background-color: #f8f9fa;
             font-family: Arial, sans-serif;
@@ -22,6 +23,7 @@
             background-color: #007bff;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            margin-bottom: 20px;
         }
         button:hover {
             background-color: #0056b3;
@@ -35,9 +37,27 @@
                 console.log('Could not send message: ', e);
             }
         }
+        
+        function setBasicCredential() {
+            try {
+                window.webkit.messageHandlers.setBasicCredential.postMessage({pinAsked: true, token: "sampleToken", refreshToken: "sampleRefreshToken"});
+            } catch(e) {
+                console.log('Could not send message: ', e);
+            }
+        }
+        
+        function onReceiveCameraPermission() {
+            try {
+                window.webkit.messageHandlers.onReceiveCameraPermission.postMessage(null);
+            } catch(e) {
+                console.log('Could not send message: ', e);
+            }
+        }
     </script>
 </head>
 <body>
     <button onclick="sendAskCameraPermission()">Ask Camera Permission</button>
+    <button onclick="setBasicCredential()">Set Basic Credential</button>
+    <button onclick="onReceiveCameraPermission()">On Receive Camera Permission</button>
 </body>
 </html>
