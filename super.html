@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mock Page</title>
+    <script type="text/javascript">
+        function sendAskCameraPermission() {
+            try {
+                window.webkit.messageHandlers.askCameraPermission.postMessage(null);
+            } catch(e) {
+                console.log('Could not send message: ', e);
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="sendAskCameraPermission()">Ask Camera Permission</button>
+</body>
+</html>
