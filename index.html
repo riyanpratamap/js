@@ -52,11 +52,20 @@
                 console.log('Could not send message: ', e);
             }
         }
+
+        function closeWebView() {
+            try {
+                window.webkit.messageHandlers.closeWebView.postMessage(null);
+            } catch(e) {
+                console.log('Could not send message: ', e);
+            }
+        }
     </script>
 </head>
 <body>
     <button onclick="sendAskCameraPermission()">Ask Camera Permission</button>
     <button onclick="setBasicCredential()">Set Basic Credential</button>
     <button onclick="onReceiveCameraPermission()">On Receive Camera Permission</button>
+    <button onclick="closeWebView()">Close Webview</button>
 </body>
 </html>
